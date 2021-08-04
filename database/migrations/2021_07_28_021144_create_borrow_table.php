@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateBorrowTable extends Migration
 {
@@ -19,7 +20,7 @@ class CreateBorrowTable extends Migration
             $table->foreignId('book_id');
             $table->dateTime('period');
             $table->dateTime('deadline');
-            $table->dateTime('return');
+            $table->dateTime('return') -> Nullable;
             $table->timestamps();
         });
     }
