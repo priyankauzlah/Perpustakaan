@@ -30,6 +30,6 @@ class Books extends Model
     //kolom database yang perlu dikonversi menjadi tipe tertentu
     protected $casts = [
         'rating' => 'double',
-        'stock' => 'int'
+        'stock' => 'integer'
     ];
 }

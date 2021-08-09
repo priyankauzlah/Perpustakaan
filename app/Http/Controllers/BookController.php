@@ -15,19 +15,14 @@ class BookController extends Controller
     }
 
     public function createBook(Request $request){
-
-    }
-
-    public function updateBook(Request $request){
         $data = $request-> all();
 
         try {
-            $book = Books::findOrFail($id);
             $book = new Books();
             $book -> nisbn = $data['nisbn'];
             $book -> title = $data['title'];
-            $book -> description = $data['descrition'];
-            $book -> imager_url = $data['image_url'];
+            $book -> description = $data['description'];
+            $book -> image_url = $data['image_url'];
             $book -> stock = $data['stock'];
             $book -> rating = $data['rating'];
             $book -> publisher_id = $data['publisher_id'];
@@ -41,5 +36,37 @@ class BookController extends Controller
             $status = 'error';
             return response() -> json(compact('status', 'th'), 200);
         }
+    }
+
+    public function updateBook($id, Request $request){
+        $data = $request-> all();
+
+        try {
+            $book = Books::findOrFail($id);
+            $book -> nisbn = $data['nisbn'];
+            $book -> title = $data['title'];
+            $book -> description = $data['description'];
+            $book -> image_url = $data['image_url'];
+            $book -> stock = $data['stock'];
+            $book -> rating = $data['rating'];
+            $book -> publisher_id = $data['publisher_id'];
+            $book -> author_id = $data['author_id'];
+
+            $book -> save();
+            $status = 'success';
+            return response() -> json(compact('status', 'book'), 200);
+
+        } catch (\Throwable $th) {
+            $status = 'error';
+            return response() -> json(compact('status', 'th'), 200);
+        }
+    }
+
+    public function deletedBook($id){
+        $book = Books::findOrFail($id);
+        $book->delete();
+
+        $status = "delete success";
+        return response()->json(compact('status'), 200);
     }
 }
