@@ -38,4 +38,4 @@ Route::post('user/delete/{id}', [UserController::class, 'deleteUser']);
 Route::get('authors/get/{id}', [AuthorController::class, 'readAuthor']);
 Route::post('authors/create', [AuthorController::class, 'createAuthor']);
 Route::post('authors/update/{id}', [AuthorController::class, 'updateAuthor']);
-Route::delete('authors/delete', [AuthorController::class, 'deleteBook']);
+Route::delete('authors/delete/{id}', [AuthorController::class, 'deleteAuthor']);

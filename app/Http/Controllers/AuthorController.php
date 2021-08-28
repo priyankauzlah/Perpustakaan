@@ -49,7 +49,7 @@ class AuthorController extends Controller
         }
     }
 
-    public function deletedAuthor($id){
+    public function deleteAuthor($id){
         $author = Authors::findOrFail($id);
         $author->delete();
 
