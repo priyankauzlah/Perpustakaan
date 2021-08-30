@@ -126,6 +126,7 @@ class UserController extends Controller
 
         return response()->json(compact('user'), 200);
     }
+    
     //fungsi untuk menghapus user / delete user
     public function deleteUser($id){
         $user = User::find($id);
